@@ -1,7 +1,4 @@
-FROM ubuntu:20.04
-
-RUN apt-get -y update
-RUN apt-get -y install nginx
+FROM node:14.17.5-alpine
 
 WORKDIR /app
 COPY . .
