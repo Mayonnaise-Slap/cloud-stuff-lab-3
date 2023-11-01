@@ -7,4 +7,4 @@ RUN python -m pip install -r requirements.txt
 COPY . .
 EXPOSE 3000
 
-ENTRYPOINT [ "python", "src/app.py" ]
+ENTRYPOINT [ "python", "app.py" ]
