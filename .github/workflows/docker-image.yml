@@ -21,6 +21,6 @@ jobs:
       - name: Push image to docker registry
         run: docker push mayonnaiseslap/lab-3:theflaskimage
       - name: rename image to upload to yandex
-        run: docker tag mayonnaiseslap/lab-3:theflaskimage cr.yandex/tab-3:theflaskimage
+        run: docker tag mayonnaiseslap/lab-3:theflaskimage cr.yandex/lab-3:theflaskimage
       - name: Push image to yandex registry
-        run: docker login --username oauth  --password ${{ secrets.YANDEX_CONTAINER_AUTH_TOKEN }} cr.yandex && docker push cr.yandex/tab-3:theflaskimage
+        run: docker login --username oauth  --password ${{ secrets.YANDEX_CONTAINER_AUTH_TOKEN }} cr.yandex && docker push cr.yandex/lab-3:theflaskimage
