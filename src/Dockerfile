@@ -1,8 +1,10 @@
-FROM node:14.17.5-alpine
+FROM python:3.11.3-alpine3.16
 
 WORKDIR /app
-COPY . .
-RUN npm install
+COPY requirements.txt /app
+RUN python -m pip install -r requirements.txt
 
-ENTRYPOINT ["node","app.js"]
+COPY . .
 EXPOSE 3000
+
+CMD [ "python", "app.py" ]
