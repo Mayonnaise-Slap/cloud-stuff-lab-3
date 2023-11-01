@@ -13,10 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag mayonnaiseslap/lab-3:theflaskimage
-    - name: Docker Login
-      run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
-    - name: Push image to docker registry
-      run: docker push mayonnaiseslap/lab-3:theflaskimage
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag mayonnaiseslap/lab-3:theflaskimage
+      - name: Docker Login
+        run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
+      - name: Push image to docker registry
+        run: docker push mayonnaiseslap/lab-3:theflaskimage
+      - name: rename image to upload to yandex
+        run: docker tag mayonnaiseslap/lab-3:theflaskimage cr.yandex/tab-3:theflaskimage
+      - name: Push image to yandex registry
+        run: docker login --username oauth  --password ${{ secrets.YANDEX_CONTAINER_AUTH_TOKEN }} cr.yandex && docker push cr.yandex/tab-3:theflaskimage
