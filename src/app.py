@@ -7,9 +7,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    data = int(open("data.txt").read())
+    data = int(open("Data/data.txt").read())
     data += 1
-    open("data.txt", "w").write(str(data))
+    open("Data/data.txt", "w").write(str(data))
     chosen_image = randint(0, 9)
     return render_template("index.html", number=data,
                            image=f"{chosen_image}.jpg")
