@@ -1,0 +1,15 @@
+name: here shuold be tests
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: pass
+        run: echo pwd
